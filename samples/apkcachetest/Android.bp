@@ -1,3 +1,4 @@
+//
 // Copyright (C) 2016 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,29 +12,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
-#include "dumper/frontend_action_factory.h"
-
-#include "dumper/frontend_action.h"
-
-#include <clang/Frontend/FrontendActions.h>
-
-#include <utility>
-
-
-namespace header_checker {
-namespace dumper {
-
-
-HeaderCheckerFrontendActionFactory::HeaderCheckerFrontendActionFactory(
-    HeaderCheckerOptions &options)
-    : options_(options) {}
-
-std::unique_ptr<clang::FrontendAction>
-HeaderCheckerFrontendActionFactory::create() {
-  return std::make_unique<HeaderCheckerFrontendAction>(options_);
+android_test {
+    name: "ApkCacheTest",
+    srcs: ["src/**/*.java"],
+    platform_apis: true,
+    certificate: "shared",
+    optimize: {
+        enabled: false,
+    },
 }
-
-
-}  // dumper
-}  // header_checker
